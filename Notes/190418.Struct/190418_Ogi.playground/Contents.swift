@@ -1,0 +1,41 @@
+import Foundation
+
+// 구조체를 통한 이니셜라이저 생성
+struct Person {
+    // 저장프로퍼티에서는 모든 값에 다 속성을 넣어주어야 한다.(setting을 넣어주어야 한다.)
+    let name: String
+    var age: UInt = 0 // 프로퍼티의 기본값을 넣어주는 것
+    var nickname: String?
+    // 옵셔널은 값이 있을 수도, 없을 수도 있다.
+    // 옵셔널이 아닌 프로퍼티들은 값이 무조건 있어야 한다.
+    
+//    init(name: String, age: UInt, nickname: String? = nil) {
+//        // self는 init을 통해 만들어지게 되는 새로운 인스턴스를 뜻한다.
+//        self.name = name
+//        self.age = age
+//        self.nickname = nickname
+//    }
+    // nickname에서는 값이 없을 수도 있는 옵셔널이기 때문에 값을 굳이 주지 않아도 됨.
+    
+    // 구조체는 원래 init이라는 것을 내부적으로 선언하고 있지만, 자동으로 적용되었던 것이다.
+    // (우와 이거 신기하다 ..) 근데 새로운 init을 만들고 싶을 때에는(닉네임이 없을 수도 있는 상황), 따로 init을 만들어 주는 순간 자동으로 만들어줬던 init을 무력화시켜준다.
+    
+    init(name: String = "default", age: UInt = 0, nickname: String? = nil) {
+        self.name = name
+        self.age = 0
+        self.nickname = nickname
+    }
+}
+
+var yagom: Person = Person.init(name: "지은", age: 24)
+// init은 붙여도 되고 안붙여도 됨.
+
+Person (name: "yagom", age: 24, nickname: "야곰")
+// 하나의 init을 생성하면 필요에 의해서 몇개든 만들 수 있다.
+
+Person.init(age: 100)
+// 넣어준 값 이외에는 다 default 값이 들어간다.
+
+
+
+
