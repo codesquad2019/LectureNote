@@ -19,6 +19,11 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
     let imageManager: PHCachingImageManager = PHCachingImageManager()
     let cellIdentifier: String = "cell"
     
+    // IBAction으로 refresh해주는 메서드 
+    @IBAction func touchUpRefreshButton(_ sender: UIBarButtonItem) {
+        self.tableView.reloadSections(IndexSet(0...0), with: .automatic)
+    }
+    
     // 어떤 row 값을 편집할 수 있게 할 것인가?
     func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
         return true
